@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://rpihmra4yqgg"]
+
+[ext_resource type="Texture2D" uid="uid://c4y78d3efhper" path="res://assets/fourSeasonsPlatformer_ [tileset, version 2.0]/foreground_/foreground_.png" id="1_o12aa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o12aa"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6fc4"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hbtk"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faptx"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijlu1"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpkpr"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur35e"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8ee0"]
+atlas = ExtResource("1_o12aa")
+region = Rect2(112, 80, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o12aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6fc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hbtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faptx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijlu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpkpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur35e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8ee0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

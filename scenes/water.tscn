@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c00uvt05gpylh"]
+
+[ext_resource type="SpriteFrames" uid="uid://rpihmra4yqgg" path="res://water.tres" id="1_bdk6y"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+z_index = 6
+sprite_frames = ExtResource("1_bdk6y")
+autoplay = "default"
+frame_progress = 0.993399
