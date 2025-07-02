@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://dki2aklrli11x"]
+
+[ext_resource type="Texture2D" uid="uid://dvim1sbmmlpse" path="res://assets/Castle Platformer Tileset [16x16][FREE] - RottingPixels/open_door_round.png" id="1_jb22b"]
+[ext_resource type="Script" uid="uid://edtsevf10a6s" path="res://scripts/door_area.gd" id="1_vhqyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhqyk"]
+atlas = ExtResource("1_jb22b")
+region = Rect2(0, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g0hr"]
+atlas = ExtResource("1_jb22b")
+region = Rect2(0, 26, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dspli"]
+atlas = ExtResource("1_jb22b")
+region = Rect2(0, 52, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a0dy"]
+atlas = ExtResource("1_jb22b")
+region = Rect2(0, 78, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx2o3"]
+atlas = ExtResource("1_jb22b")
+region = Rect2(0, 104, 16, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kigyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhqyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g0hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dspli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a0dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx2o3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jb22b"]
+size = Vector2(16, 20)
+
+[node name="door_area" type="Area2D"]
+collision_layer = 524288
+collision_mask = 2
+script = ExtResource("1_vhqyk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kigyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_jb22b")

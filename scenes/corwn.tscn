@@ -1,0 +1,155 @@
+[gd_scene load_steps=23 format=3 uid="uid://c0bwjx3awt7un"]
+
+[ext_resource type="Texture2D" uid="uid://calbm0slcxaw3" path="res://assets/fourSeasonsPlatformer_ [tileset, version 2.0]/objects_/Crown spritesheet.png" id="1_s7cmq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa8px"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thtre"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxwp5"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s7n0"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgtrb"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjul1"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ory"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0475y"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c01se"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7clsv"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jekh"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhyvr"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hunvq"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4t6v"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qtwu"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq41y"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtovs"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7u02"]
+atlas = ExtResource("1_s7cmq")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bt7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa8px")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thtre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxwp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s7n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgtrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjul1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ory")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0475y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c01se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7clsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jekh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhyvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hunvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4t6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qtwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq41y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtovs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7u02")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_etrdt"]
+offsets = PackedFloat32Array(0.201299, 0.603896, 0.714286)
+colors = PackedColorArray(1, 1, 1, 1, 0.303233, 0.303233, 0.303233, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g0eax"]
+gradient = SubResource("Gradient_etrdt")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2bt7b")
+autoplay = "default"
+frame_progress = 0.803393
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.769931, 0.652433, 0.0239318, 1)
+texture = SubResource("GradientTexture2D_g0eax")

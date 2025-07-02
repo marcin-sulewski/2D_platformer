@@ -2,22 +2,19 @@ extends CharacterBody2D
 
 
 const SPEED = 100.0
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -220.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dust: AnimatedSprite2D = $dust
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sword: AnimatedSprite2D = $sword
+@onready var camera_2d: Camera2D = $Camera2D
 
 var on_ladder: bool = false
-var attacking: bool = false
 
-func _ready():
-	animation_player.animation_finished.connect(_on_animation_finished)
+var fall_velocity: float = 0.0
+const LANDING_SHAKE_THRESHOLD: float = 350.0  
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if not is_on_floor() and !on_ladder:
 		velocity += get_gravity() * delta
 	if on_ladder and not is_on_floor():
@@ -44,6 +41,9 @@ func _physics_process(delta: float) -> void:
 		dust.flip_h = false
 		
 	if is_on_floor():
+		if fall_velocity > LANDING_SHAKE_THRESHOLD:
+			shake_camera()
+			fall_velocity = 0.0
 		if direction == 0:
 			dust.visible = false
 			animated_sprite_2d.play("idle")
@@ -53,25 +53,24 @@ func _physics_process(delta: float) -> void:
 			dust.play("dust")
 	else:
 		animated_sprite_2d.play("jump")
-	
+		fall_velocity = velocity.y
+		
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if Input.is_action_just_pressed("attack") and !animation_player.is_playing() and !sword.is_playing() and !on_ladder:
-		attacking = true
-		sword.play("attack")
-		animation_player.play("attack")
-		animation_player.play("sword_return")
 	move_and_slide()
-	
-func _on_animation_finished(anim_name: String) -> void:
-	if anim_name == "attack" and attacking:
-		animation_player.play("sword_return")
-		attacking = false
-		sword.visible = false
 
+func shake_camera():
+	if camera_2d:
+		camera_2d.offset = Vector2.ZERO
+		var tween := get_tree().create_tween().set_loops(2)
+		
+		for i in range(2):
+			var offset = Vector2(randf_range(-4, 4), randf_range(-4, 4))
+			tween.tween_property(camera_2d, "offset", offset, 0.05).set_trans(Tween.TRANS_SINE)
+			tween.tween_property(camera_2d, "offset", Vector2.ZERO, 0.05).set_trans(Tween.TRANS_SINE)
 
 func _on_ladder_area_2d_body_entered(body: Node2D) -> void:
 	if "Player" in body.name:
