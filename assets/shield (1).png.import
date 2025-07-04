@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2ddhkl4td1k2"
-path="res://.godot/imported/MediavelFree.png-75a4fc4b41d0e97687733c00c17a0439.ctex"
+uid="uid://dqittcxktk5ji"
+path="res://.godot/imported/shield (1).png-e69fba4b8d23347437e97233590bc6cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/MediavelFree.png"
-dest_files=["res://.godot/imported/MediavelFree.png-75a4fc4b41d0e97687733c00c17a0439.ctex"]
+source_file="res://assets/shield (1).png"
+dest_files=["res://.godot/imported/shield (1).png-e69fba4b8d23347437e97233590bc6cf.ctex"]
 
 [params]
 

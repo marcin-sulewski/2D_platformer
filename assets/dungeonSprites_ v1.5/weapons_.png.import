@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cawdryq8v8455"
-path="res://.godot/imported/Untitled - Frame 1.jpg-3220eab09aa363e30e8689726dadc77b.ctex"
+uid="uid://bs0gb3eqahv87"
+path="res://.godot/imported/weapons_.png-7b0f2531ef4d52b9c0c9cd4e14d83e87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Untitled - Frame 1.jpg"
-dest_files=["res://.godot/imported/Untitled - Frame 1.jpg-3220eab09aa363e30e8689726dadc77b.ctex"]
+source_file="res://assets/dungeonSprites_ v1.5/weapons_.png"
+dest_files=["res://.godot/imported/weapons_.png-7b0f2531ef4d52b9c0c9cd4e14d83e87.ctex"]
 
 [params]
 

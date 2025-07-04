@@ -15,6 +15,18 @@ run/main_scene="uid://xvrojiy5tlk1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Transition="*res://scenes/Transition.tscn"
+Global="*res://scripts/Global.gd"
+GlobalSave="*res://scripts/globalsave.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
 [input]
 
 left={

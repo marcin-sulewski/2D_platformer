@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://dw5cc5xh7vbhw"]
+
+[ext_resource type="Texture2D" uid="uid://b3wyt6ymu62d1" path="res://assets/Green Portal Sprite Sheet.png" id="1_yt23u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvhg4"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucp3p"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibski"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nibs"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8snt2"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsvtw"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdnwd"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tevf"]
+atlas = ExtResource("1_yt23u")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jgcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvhg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucp3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibski")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nibs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8snt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsvtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdnwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tevf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1guaj"]
+offsets = PackedFloat32Array(0.00649351, 0.727273)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yt23u"]
+gradient = SubResource("Gradient_1guaj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="green_portal_anim" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5jgcu")
+autoplay = "default"
+frame_progress = 0.957582
+flip_h = true
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+color = Color(0.2, 0.992157, 0.501961, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_yt23u")

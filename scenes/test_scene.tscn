@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://dx262bv4f24wm"]
+[gd_scene load_steps=6 format=4 uid="uid://dx262bv4f24wm"]
 
 [ext_resource type="Texture2D" uid="uid://ddw4fi12e4iry" path="res://assets/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_g7g4h"]
 [ext_resource type="PackedScene" uid="uid://ba85ew0tfco0m" path="res://scenes/player.tscn" id="2_7ddre"]
 [ext_resource type="PackedScene" uid="uid://dki2aklrli11x" path="res://scenes/door_area.tscn" id="3_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://xvrojiy5tlk1" path="res://scenes/castle_main_hall.tscn" id="4_3qnke"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8ivh"]
 texture = ExtResource("1_g7g4h")
@@ -129,4 +128,3 @@ position_smoothing_enabled = true
 
 [node name="door_area" parent="." instance=ExtResource("3_qjeyg")]
 position = Vector2(522, 223)
-scene_to_load = ExtResource("4_3qnke")

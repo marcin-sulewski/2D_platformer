@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxeqxhfciccoy"]
+
+[ext_resource type="Texture2D" uid="uid://dwavy0qjpj2bp" path="res://assets/delfaut Portal Sprite Sheet.png" id="1_1guaj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qslio"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4gby"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00unw"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdm8w"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqlfv"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3e5q"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ufo0"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j1vf"]
+atlas = ExtResource("1_1guaj")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq1v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qslio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4gby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00unw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdm8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqlfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3e5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ufo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j1vf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1guaj"]
+offsets = PackedFloat32Array(0.00649351, 0.727273)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qslio"]
+gradient = SubResource("Gradient_1guaj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_xq1v6")
+autoplay = "default"
+frame_progress = 0.673996
+flip_h = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.643137, 0.454902, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_qslio")

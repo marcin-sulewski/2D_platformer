@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dspnsqyb7ailr"]
+
+[ext_resource type="Script" uid="uid://hmghvd1t8m74" path="res://scripts/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://ddw4fi12e4iry" path="res://assets/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_wy8tx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brs3p"]
+atlas = ExtResource("2_wy8tx")
+region = Rect2(32, 176, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcln5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brs3p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fttkb"]
+size = Vector2(10, 6)
+
+[node name="Key" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_fttkb")
+item_id = "yellow_key"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jcln5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fttkb")

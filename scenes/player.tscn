@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ba85ew0tfco0m"]
+[gd_scene load_steps=31 format=3 uid="uid://ba85ew0tfco0m"]
 
 [ext_resource type="Texture2D" uid="uid://cfpmhwrglfi6c" path="res://assets/camelot_ [version 1.0]/arthurPendragon_.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://3o7rp65p6idb" path="res://scripts/player.gd" id="1_g2els"]
@@ -89,7 +89,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"die",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,9 +151,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
-radius = 4.0
-height = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(8, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("3_qhqgy")
@@ -198,6 +197,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+offsets = PackedFloat32Array(0.188312, 0.681818)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dqkch"]
+gradient = SubResource("Gradient_qhqgy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -207,12 +215,13 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
+frame_progress = 0.435266
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_3vyb7")
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="dust" type="AnimatedSprite2D" parent="."]
 position = Vector2(-11, -4)
@@ -220,3 +229,8 @@ sprite_frames = SubResource("SpriteFrames_l71n6")
 animation = &"dust"
 frame = 4
 frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.658824, 0.403922, 0, 1)
+energy = 0.2
+texture = SubResource("GradientTexture2D_dqkch")

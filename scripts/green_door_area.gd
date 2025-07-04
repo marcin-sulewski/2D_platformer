@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var door: AnimatedSprite2D = $AnimatedSprite2D
+@onready var door: AnimatedSprite2D = $green_door
 @export var scene_to_load: PackedScene
 @export var return_mode: bool = false
 @export var target_entry_name: String
@@ -11,9 +11,6 @@ var opening: bool = false
 var player_ref: Node = null
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-
 	if door:
 		door.animation_finished.connect(_on_door_animation_finished)
 
