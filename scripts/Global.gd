@@ -1,7 +1,7 @@
 extends Node
 
 # Prosty ekwipunek jako słownik
-var inventory := {}
+@export var inventory := {}
 
 func add_item(item_name: String) -> void:
 	inventory[item_name] = true

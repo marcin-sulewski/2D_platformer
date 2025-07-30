@@ -2,6 +2,7 @@ extends Node
 
 # { scene_path : { "removed": PackedStringArray, "vars": { node_path: {key: value} } } }
 var scene_state := {}
+var checkpoints := {}
 
 func mark_removed(scene_path: String, node_path: String) -> void:
 	if not scene_state.has(scene_path):
@@ -23,3 +24,10 @@ func get_state(scene_path: String) -> Dictionary:
 		return scene_state[scene_path]
 	else:
 		return {}
+		
+
+func set_checkpoint(scene_path: String, id: String, position: Vector2) -> void:
+	checkpoints[scene_path] = {"id": id, "position": position}
+
+func get_checkpoint(scene_path: String) -> Dictionary:
+	return checkpoints.get(scene_path, {})

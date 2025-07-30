@@ -64,3 +64,28 @@ func set_entry_point(name: String) -> void:
 
 func get_entry_point() -> String:
 	return _entry_point_name
+func restart_scene() -> void:
+	# Zabezpieczenie
+	if not get_tree().current_scene:
+		push_error("Transition: brak bieżącej sceny do restartu.")
+		return
+
+	_target_scene = null
+	_current_scene_path = get_tree().current_scene.scene_file_path
+
+	visible = true
+	if _tween: _tween.kill()
+
+	_tween = create_tween()
+	_tween.tween_property(fade_rect, "modulate:a", 1.0, duration).set_trans(Tween.TRANS_SINE)
+	_tween.tween_callback(_reload_current_scene)
+
+# prywatny callback
+func _reload_current_scene() -> void:
+	get_tree().change_scene_to_file(_current_scene_path)
+
+	# fade-in
+	fade_rect.modulate.a = 1.0
+	_tween = create_tween()
+	_tween.tween_property(fade_rect, "modulate:a", 0.0, duration).set_trans(Tween.TRANS_SINE)
+	_tween.tween_callback(func(): visible = false)

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://txreokucfsy"]
+
+[ext_resource type="Script" uid="uid://sw78lkwn6v7e" path="res://scripts/checkpoint.gd" id="1_ywqth"]
+[ext_resource type="Texture2D" uid="uid://smib25ss6agf" path="res://assets/stock-vector-waving-flags-pixel-art-set-flagpole-collection-bit-sprite-game-development-mobile-app-2185922625.png" id="1_yyywg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywqth"]
+atlas = ExtResource("1_yyywg")
+region = Rect2(32, 0, 32, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsimk"]
+atlas = ExtResource("1_yyywg")
+region = Rect2(32, 69, 32, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqsag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywqth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsimk")
+}],
+"loop": true,
+"name": &"flag",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c45tw"]
+size = Vector2(7, 23)
+
+[node name="Checkpoint" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_ywqth")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(13, -4)
+sprite_frames = SubResource("SpriteFrames_yqsag")
+animation = &"flag"
+autoplay = "flag"
+frame_progress = 0.714236
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -11.5)
+shape = SubResource("RectangleShape2D_c45tw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
