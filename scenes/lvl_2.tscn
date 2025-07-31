@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://b50o86kvqassq"]
+[gd_scene load_steps=20 format=4 uid="uid://b50o86kvqassq"]
 
 [ext_resource type="Texture2D" uid="uid://c65003uan8c6v" path="res://assets/castle-tileset-green.png" id="1_djdqn"]
 [ext_resource type="Texture2D" uid="uid://ddw4fi12e4iry" path="res://assets/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_tct44"]
 [ext_resource type="PackedScene" uid="uid://c0t2dpqo1vijd" path="res://scenes/torch.tscn" id="3_e8ep2"]
 [ext_resource type="PackedScene" uid="uid://bn7fg06a6gf30" path="res://scenes/green_door_area.tscn" id="4_0atve"]
+[ext_resource type="Script" uid="uid://edtsevf10a6s" path="res://scripts/door_area.gd" id="5_lmdrw"]
 [ext_resource type="PackedScene" uid="uid://ba85ew0tfco0m" path="res://scenes/player.tscn" id="5_tct44"]
 [ext_resource type="PackedScene" uid="uid://dw5cc5xh7vbhw" path="res://scenes/green_portal_anim.tscn" id="6_e8ep2"]
 [ext_resource type="PackedScene" uid="uid://dg5iina3jkabd" path="res://scenes/ladder_area_2d.tscn" id="7_0atve"]
@@ -309,8 +310,12 @@ tile_set = SubResource("TileSet_bv24h")
 
 [node name="green_door_area" parent="." instance=ExtResource("4_0atve")]
 position = Vector2(216, 227)
+script = ExtResource("5_lmdrw")
 return_mode = true
 target_entry_name = "entry_to_lvl_2"
+label_name = ""
+full_text = ""
+type_speed = 0.06
 
 [node name="Player" parent="." instance=ExtResource("5_tct44")]
 position = Vector2(217, 239)

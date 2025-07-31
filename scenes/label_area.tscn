@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcyw0kjki5rt5"]
+
+[ext_resource type="Script" uid="uid://bquyf5m0btpv5" path="res://scripts/label_area.gd" id="1_21xao"]
+
+[node name="label_area" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_21xao")

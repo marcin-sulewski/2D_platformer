@@ -6,6 +6,7 @@ const ACCELERATION   := 500.0     # px/s² – jak szybko rozpędzamy
 const DECELERATION   := 800.0     # px/s² – jak szybko hamujemy
 const JUMP_VELOCITY  := -230.0
 # -------------------------------------------------------------------
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer_jump
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dust: AnimatedSprite2D = $dust
@@ -46,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	# --- SKOK -------------------------------------------------------
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		audio_stream_player.play()
 	# ----------------------------------------------------------------
 
 	# --- KIERUNEK RUCHU X ------------------------------------------
@@ -101,3 +103,12 @@ func _on_ladder_area_2d_body_exited(body: Node2D) -> void:
 	if "Player" in body.name:
 		on_ladder = false
 # -------------------------------------------------------------------
+func kill():
+	can_move = false
+	velocity = Vector2.ZERO
+	animated_sprite_2d.play("die") 
+	Transition.restart_scene()  # respawn w tej samej scenie
+	
+func bounce():
+	velocity.y = JUMP_VELOCITY / 1.5 
+	velocity.x = MAX_SPEED * 2.0

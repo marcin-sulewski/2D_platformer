@@ -1,6 +1,5 @@
 extends Area2D
 @export var item_id : String  # np. "green_key"
-
 func _ready() -> void:
 	# jeśli ten node został już zebrany – usuń
 	var scene_path = get_tree().current_scene.scene_file_path

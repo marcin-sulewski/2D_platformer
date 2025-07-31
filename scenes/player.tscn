@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://ba85ew0tfco0m"]
+[gd_scene load_steps=32 format=3 uid="uid://ba85ew0tfco0m"]
 
 [ext_resource type="Texture2D" uid="uid://cfpmhwrglfi6c" path="res://assets/camelot_ [version 1.0]/arthurPendragon_.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://3o7rp65p6idb" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cicft73l6n5v8" path="res://assets/camelot_ [version 1.0]/dust_.png" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://Music&SFX/sounds/jump.wav" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -215,10 +216,8 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"die"
+animation = &"jump"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)
@@ -235,3 +234,8 @@ frame_progress = 1.0
 color = Color(0.658824, 0.403922, 0, 1)
 energy = 0.2
 texture = SubResource("GradientTexture2D_dqkch")
+
+[node name="AudioStreamPlayer_jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dqkch")
+volume_db = -10.0
+bus = &"SFX"

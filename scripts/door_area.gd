@@ -4,7 +4,15 @@ extends Area2D
 @export var scene_to_load: PackedScene
 @export var return_mode: bool = false
 @export var target_entry_name: String
-@export var required_key: String = ""  # ← dodaj nazwę klucza (lub pusty jeśli nie wymagany)
+@export var required_key: String = ""  # ← wymagany klucz (jeśli pusty, drzwi otwarte)
+
+@export var label_name: String = ""  # ścieżka do Labela (np. "../Label10")
+@export_multiline var full_text: String = ""  # tekst do pokazania
+@export var type_speed: float = 0.06  # czas między literami
+
+var current_char := 0
+var label_ref: Label = null
+var typing := false
 
 var player_in_range: bool = false
 var opening: bool = false
@@ -19,15 +27,14 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if player_in_range and not opening and event.is_action_pressed("attack"):
-		# Sprawdź czy wymagany klucz jest obecny
 		if required_key != "" and not Global.has_item(required_key):
+			_start_typing()
 			print("Drzwi zamknięte. Potrzebujesz klucza:", required_key)
 			return
 
 		opening = true
-
 		if player_ref:
-			player_ref.can_move = false  # ⛔ zablokuj ruch gracza
+			player_ref.can_move = false
 
 		if door and "default" in door.sprite_frames.get_animation_names():
 			door.play("default")
@@ -51,3 +58,30 @@ func _on_body_exited(body: Node) -> void:
 	if body.name == "Player":
 		player_in_range = false
 		player_ref = null
+
+func _start_typing():
+	if typing:
+		return
+	label_ref = get_node_or_null(label_name)
+	if label_ref == null:
+		push_error("Nie znaleziono labela: " + label_name)
+		return
+
+	typing = true
+	current_char = 0
+	label_ref.text = ""
+	label_ref.visible = true
+	_continue_typing()
+
+func _continue_typing():
+	if current_char < full_text.length():
+		label_ref.text += full_text[current_char]
+		current_char += 1
+		await get_tree().create_timer(type_speed).timeout
+		_continue_typing()
+	else:
+		typing = false
+		await get_tree().create_timer(3.0).timeout
+		if label_ref:
+			label_ref.text = ""
+			label_ref.visible = false

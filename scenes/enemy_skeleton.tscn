@@ -1,0 +1,146 @@
+[gd_scene load_steps=19 format=3 uid="uid://4x65r5xh1q82"]
+
+[ext_resource type="Script" uid="uid://c70efxbu2utlk" path="res://scripts/enemy_skeleton.gd" id="1_bsdij"]
+[ext_resource type="Texture2D" uid="uid://crkpw5gydbbag" path="res://assets/dungeonSprites_ v1.5/skeleton_.png" id="1_dunik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsdij"]
+atlas = ExtResource("1_dunik")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v52mf"]
+atlas = ExtResource("1_dunik")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhonu"]
+atlas = ExtResource("1_dunik")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no3jx"]
+atlas = ExtResource("1_dunik")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg5lr"]
+atlas = ExtResource("1_dunik")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgiaw"]
+atlas = ExtResource("1_dunik")
+region = Rect2(24, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkog3"]
+atlas = ExtResource("1_dunik")
+region = Rect2(48, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyt3y"]
+atlas = ExtResource("1_dunik")
+region = Rect2(72, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vyua"]
+atlas = ExtResource("1_dunik")
+region = Rect2(0, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j07me"]
+atlas = ExtResource("1_dunik")
+region = Rect2(24, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoe2o"]
+atlas = ExtResource("1_dunik")
+region = Rect2(48, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3rqt"]
+atlas = ExtResource("1_dunik")
+region = Rect2(72, 120, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg5lr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsdij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v52mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhonu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_no3jx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg5lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgiaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkog3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyt3y")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vyua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j07me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoe2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3rqt")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgiaw"]
+size = Vector2(8, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsdij"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v52mf"]
+size = Vector2(8, 3)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_bsdij")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kg5lr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_jgiaw")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_bsdij")
+
+[node name="headarea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="headarea"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_v52mf")
+
+[node name="HurtTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
