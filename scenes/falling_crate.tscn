@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://vt7y2im5xjfe"]
+
+[ext_resource type="Texture2D" uid="uid://ctin6tyv1ncv7" path="res://assets/tileset.png" id="1_it30f"]
+[ext_resource type="Script" uid="uid://b5y5s5f1o6rqv" path="res://scripts/falling_crate.gd" id="1_kgu5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgu5s"]
+atlas = ExtResource("1_it30f")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ys0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgu5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trwph"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgu5s"]
+size = Vector2(18, 18)
+
+[node name="falling_crate" type="RigidBody2D"]
+script = ExtResource("1_kgu5s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8ys0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_trwph")
+
+[node name="ResetTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kgu5s")
+
+[node name="ShakeTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

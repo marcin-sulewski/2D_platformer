@@ -31,3 +31,9 @@ func set_checkpoint(scene_path: String, id: String, position: Vector2) -> void:
 
 func get_checkpoint(scene_path: String) -> Dictionary:
 	return checkpoints.get(scene_path, {})
+	
+func mark_label_shown(scene_path: String, label_id: String) -> void:
+	save_var(scene_path, "labels", label_id, true)
+
+func was_label_shown(scene_path: String, label_id: String) -> bool:
+	return get_state(scene_path).get("vars", {}).get("labels", {}).get(label_id, false)

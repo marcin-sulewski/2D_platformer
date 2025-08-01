@@ -1,33 +1,41 @@
 extends Area2D
 
-@export var label_name: String = ""  # Nazwa Labela do wyświetlenia tekstu
-@export_multiline var full_text: String = ""  # Treść wiadomości
-@export var type_speed: float = 0.03  # Prędkość pojawiania się liter
+@export var label_name: String = ""  # ścieżka do Labela (np. "../CanvasLayer/Label")
+@export_multiline var full_text: String = ""  # Tekst
+@export var type_speed: float = 0.03
+@export var label_id: String = ""  # Unikalny ID dla zapisu
 
 var current_char := 0
 var label_ref: Label
 var typing := false
-var already_shown := false
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 
+	# Sprawdź, czy był już wyświetlony
+	if GlobalSave.was_label_shown(get_tree().current_scene.scene_file_path, label_id):
+		label_ref = get_node_or_null(label_name)
+		if label_ref:
+			label_ref.text = full_text
+
 func _on_body_entered(body):
-	if already_shown or typing:
+	if typing:
+		return
+	if body.name != "Player":
 		return
 
-	if body.name != "Player":
+	if GlobalSave.was_label_shown(get_tree().current_scene.scene_file_path, label_id):
 		return
 
 	label_ref = get_node_or_null(label_name)
 	if label_ref == null:
-		push_error("Nie znaleziono labela o nazwie: " + label_name)
+		push_error("Nie znaleziono labela: " + label_name)
 		return
 
-	typing = true
-	already_shown = true
 	label_ref.text = ""
 	current_char = 0
+	typing = true
+	GlobalSave.mark_label_shown(get_tree().current_scene.scene_file_path, label_id)
 	_start_typing()
 
 func _start_typing():
